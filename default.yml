@@ -1,0 +1,29 @@
+# ~/.tmuxinator/testproject.yml
+# title: default.yml
+# description: Default template to create sessions in Tmux with tmuxinator
+# author: Piotr Strzyzewski
+# notes: Installl tmuxinator with ruby: gem install tmuxinator
+#        edit commands as needed
+#        copy to ~/.tmuxinator/
+#
+# GPL General Public License
+##
+project_name: ClientName
+project_root: ~/
+tabs:
+   - operations:
+      layout: d246,124x37,0,0{82x37,0,0,41x37,83,0[41x18,83,0,41x18,83,19]}
+      panes:
+         - w
+         -
+         -
+   - monitor:
+      layout: 806f,123x37,0,0[124x7,0,0,124x8,0,8{72x8,0,8,51x8,73,8},124x20,0,17]
+      panes:
+         - tail -f /var/log/syslog.log # change syslog.log to messages
+         - iostat
+         - iotop # need root privileges
+         - top
+   - network:
+      panes:
+         - netstat -ant | grep ESTABLISHED
